@@ -46,6 +46,7 @@ public class StudentService {
     }
 
     public Student getStudentById(Long id){
+
         try {
             return studentRepository.findById(id)
                     .orElseThrow(() -> new StudentNotFoundException(id));
@@ -65,6 +66,15 @@ public class StudentService {
                     student.setAge(newStudent.getAge());
                     return studentRepository.save(student);
                 }).orElseThrow(() -> new StudentNotFoundException(id));
+    }
+
+    public String deleteStudent(Long id){
+
+        if (!studentRepository.existsById(id)){
+            throw new StudentNotFoundException(id);
+        }
+        studentRepository.deleteById(id);
+        return "Student with ID = " + id + " has been deleted successfully";
     }
 
 
