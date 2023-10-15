@@ -56,5 +56,16 @@ public class StudentService {
         }
     }
 
+    public Student updateStudent(Student newStudent, Long id){
+
+        return studentRepository.findById(id)
+                .map(student -> {
+                    student.setFirstName(newStudent.getFirstName());
+                    student.setLastName(newStudent.getLastName());
+                    student.setAge(newStudent.getAge());
+                    return studentRepository.save(student);
+                }).orElseThrow(() -> new StudentNotFoundException(id));
+    }
+
 
 }
