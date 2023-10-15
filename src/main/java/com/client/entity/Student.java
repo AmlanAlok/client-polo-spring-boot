@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="users")
-public class Students {
+@Table(name="students")
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +18,19 @@ public class Students {
     @Column
     private String lastName;
 
+    @Column
+    private int age;
+
     @Column(name = "created_at")
     private Timestamp createdAt;
 
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    public Students() {
+    public Student() {
     }
 
-    public Students(Long id, String firstName, String lastName, Timestamp createdAt, Timestamp updatedAt) {
+    public Student(Long id, String firstName, String lastName, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -57,6 +60,14 @@ public class Students {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Timestamp getCreatedAt() {

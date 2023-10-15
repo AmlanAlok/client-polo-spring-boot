@@ -18,7 +18,7 @@ USE `client_polo` ;
 -- Table `client_polo`.`students`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `client_polo`.`students` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
   `age` INT NOT NULL,
